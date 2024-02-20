@@ -1,4 +1,4 @@
-[바로가기](https://resilient-lebkuchen-f54e5e.netlify.app)
+[홈페이지](https://resilient-lebkuchen-f54e5e.netlify.app)
 
 
 유저가 값을 입력한다
