@@ -18,7 +18,10 @@ let mode = "all";
 let filterList = [];
 let doneList = [];
 
+
+
 taskInput.addEventListener("keyup", validate); //input 입력시 add버튼 활성화
+
 
 
 // 언더바 이벤트
@@ -63,6 +66,7 @@ function addTask() {
   validate();
 }
 
+
 function render() {
   // 1. 내가 선택한 탭에 따라
   // 2. 리스트를 다르게 보여준다
@@ -75,14 +79,15 @@ function render() {
   } else if (mode === "ongoing" || mode === "done") {
     list = filterList;
   }
+
   let resultHTML = "";
 
   //할 일 생성했을 시, 나타내는 Tab
 
 
-  for (let i = 0; i < taskList.length; i++) {
+  for (let i = 0; i < list.length; i++) {
     //체크버튼 클릭했을 때
-    if (taskList[i].isComplete === true) {
+    if (list[i].isComplete === true) {
       resultHTML += `<div class="task task-done">
                   <div class="task-done">${list[i].taskContent}
                   </div>
@@ -123,7 +128,14 @@ function toggleComplete(id) {
   render();
 }
 
+
+
+
+
+
 function deleteTask(id) {
+
+
   // all내에 id를 찾아 삭제
   if (mode === "all") {
     for (let i = 0; i < taskList.length; i++) {
@@ -174,7 +186,7 @@ function filter(event) {
     //진행중 클릭시 나타나는 로직
   } else if (mode === "ongoing") {
     for (let i = 0; i < taskList.length; i++) {
-      if (taskList[i].isComplete == false) {
+      if (!taskList[i].isComplete) {
         filterList.push(taskList[i]);
       }
     }
@@ -189,9 +201,9 @@ function filter(event) {
         filterList.push(taskList[i]);
       }
     }
-  }
-  render();
+    render();
   console.log(filterList);
+  }
 }
 
 
@@ -203,6 +215,7 @@ function validate() {
   addButton.disabled = false;
   }
 }
+
 
 // under-line 이동하는 함수
 function underlineIndicator(e) {
@@ -218,3 +231,69 @@ function randomIDGenerator() {
 }
 
 
+
+
+
+// 현재 날짜를 가져오는 함수
+function getCurrentDate() {
+  const currentDate = new Date();
+  const options = {
+    month: 'short',
+    day: '2-digit',
+    weekday: 'short'
+  };
+  const dateStr = currentDate.toLocaleDateString('ko-KR', options);
+  return dateStr;
+}
+
+
+// HTML 요소에 현재 날짜와 요일을 추가하는 함수
+function displayCurrentDate() {
+  const currentDate = getCurrentDate();
+  const weekDay = currentDate.slice(0, 3);
+  const date = currentDate.slice(4);
+  const year = new Date().getFullYear(); // 연도 가져오기
+
+  
+  // HTML 요소 선택
+  let todayDate = document.querySelector('.today-date');
+  let todayWeekday = document.querySelector('.today-weekday');
+  let dateHTML = '';
+
+  todayWeekday.textContent = weekDay;
+
+  // 생성된 HTML을 화면에 추가
+  dateHTML += `
+      <div class="date-area">
+      <section class="date-container">
+        <p class="day">${date.slice(5)}</p>
+        <div class="day-year">
+        <p class="month">${date.slice(1,4)}</p>
+        <p class="year">${year}</p>
+        </div>
+      </section>
+      </div>
+      `;
+
+  // todayDate 요소에 생성된 HTML 추가
+
+  todayDate.innerHTML = dateHTML;
+  console.log("Date:", date);
+  console.log("Day:", weekDay);
+}
+
+displayCurrentDate();
+
+
+
+// // 시작 버튼 클릭 시 이벤트
+// startBtn.addEventListener('click', function () {
+//   startBtn.classList.add('hidden'); // 시작 버튼을 숨깁니다.
+//   setTimeout(() => {
+//     startBtn.style.display = 'none'; // 시작 버튼을 완전히 숨깁니다.
+//     setTimeout(function () {
+//       inputArea.classList.add('visible'); // 입력 영역을 보이게 합니다.
+//     })
+//   }, 300);
+//   taskInput.focus(); // 할일 입력란에 포커스를 설정합니다.
+// });

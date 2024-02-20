@@ -122,11 +122,42 @@ body {
     margin-bottom: 20px;
   }
 
-
-
-
-
-
+  #top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(27, 27, 27);;
+  }
+  
+  .date-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .date-container p{ 
+    margin: 0;
+  }
+  
+  .day {
+    font-size: 3rem;
+    font-weight: 800;
+  }
+  
+  .month {
+    /* height: 15px; */
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .year{
+    color: #666;
+  }
+  
+  .today-weekday{
+    font-size: 2rem;
+    font-weight: 600;
+  }
 
 
 
