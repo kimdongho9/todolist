@@ -53,11 +53,38 @@ body {
 /* 언더바 꾸미는 패턴 */
 #underline {
   position: absolute;
-  height: 5px;
-  background-color: rgba(0, 47, 255, 0.753);
-  padding: 0px;
+  height: 4px;
+  background-color: rgba(102, 102, 102, 0.486);
+  padding: 1px;
   transition: 0.7s;
 }
+
+
+.check-box{
+  display: flex;
+}
+
+
+
+.check-box button{
+  border: none;
+  border-radius: 5px;
+  margin: 0;
+  margin-right: 2px;
+  background-color: rgb(65, 65, 65);
+  transition: 0.5s;
+  margin-bottom: 5px;
+}
+
+.check-box button :active {
+  position: relative;
+  top: 2px;
+}
+
+.check-box button:first-child:hover {
+  background-color: rgba(121, 201, 0, 0.479);
+}
+
 
 .button-box{
     display: flex;
@@ -72,6 +99,7 @@ body {
     margin-right: 2px;
     background-color: rgb(65, 65, 65);
     transition: 0.5s;
+    
 }
 
 .button-box button :active {
@@ -80,7 +108,7 @@ body {
   }
 
 .button-box button:first-child:hover {
-    background-color: rgba(121, 201, 0, 0.479);
+    background-color: rgba(0, 111, 201, 0.479);
   }
 .button-box button:nth-child(2):hover {
     background-color: rgb(255, 0, 0, 0.3);
@@ -96,6 +124,7 @@ body {
     display: flex;
     position: relative;
     justify-content: space-between;
+    
 }
 
 
@@ -110,6 +139,9 @@ body {
     color: lightslategray;
   }
 
+  .fa-pencil{
+    color: rgba(0, 255, 255, 0.582);
+  }
 .add-button{
     position: absolute;
     background-color:#3b3b3be8;
@@ -129,12 +161,14 @@ body {
     background-color: rgb(27, 27, 27);;
   }
   
+
   .date-container{
     display: flex;
     align-items: center;
     gap: 10px;
   }
   
+
   .date-container p{ 
     margin: 0;
   }
